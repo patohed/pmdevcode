@@ -49,12 +49,20 @@ log "Instalando dependencias de producción..."
 npm ci --production
 
 # Construir el proyecto
-log "Construyendo el proyecto para producción..."
+log "Construyendo el proyecto para producción (sin Turbopack)..."
 npm run build
 
 if [ $? -ne 0 ]; then
-    error "Error al construir el proyecto"
-    exit 1
+    error "Error al construir el proyecto. Intentando limpiar cache..."
+    rm -rf .next node_modules/.cache
+    log "Reinstalando dependencias..."
+    npm ci --production
+    log "Intentando build nuevamente..."
+    npm run build
+    if [ $? -ne 0 ]; then
+        error "Error crítico al construir el proyecto"
+        exit 1
+    fi
 fi
 
 # Detener la aplicación existente si está corriendo

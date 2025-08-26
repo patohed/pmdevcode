@@ -1,13 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Optimizaciones de rendimiento
-  experimental: {
-    optimizeCss: true,
+  // Desactivar Turbopack para evitar errores en producción
+  turbo: undefined,
+  
+  // Optimizaciones de rendimiento (sin experimental)
+  compress: true,
+  
+  // Configuración de build más estable
+  typescript: {
+    ignoreBuildErrors: false,
   },
   
-  // Compresión y optimización
-  compress: true,
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
   
   // Optimización de imágenes
   images: {

@@ -107,7 +107,33 @@ certbot renew --dry-run
 
 ## 🚨 Troubleshooting
 
-### Si la aplicación no inicia:
+### Error de Turbopack (SOLUCIONADO)
+
+Si obtienes el error `TurbopackInternalError: Failed to write page endpoint /_error`, hemos preparado varias soluciones:
+
+**Solución 1: Build limpio sin Turbopack**
+```bash
+cd /var/www/pmdevcode
+bash clean-build.sh
+```
+
+**Solución 2: Si persiste el error**
+```bash
+# Usar configuración minimal
+cp next.config.minimal.js next.config.js
+rm -rf .next node_modules/.cache
+npm run build
+```
+
+**Solución 3: Build manual paso a paso**
+```bash
+# Limpiar todo
+rm -rf .next node_modules/.cache /tmp/next-*
+rm -rf node_modules && npm install
+
+# Build sin Turbopack
+NODE_ENV=production npm run build
+```
 
 ```bash
 # Revisar logs
