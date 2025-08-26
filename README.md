@@ -1,27 +1,101 @@
-# pmdevcode
+# 🚀 PmDevOps - Consultoría DevOps y Desarrollo Web
 
-Sitio web profesional de **Dev Code** - Desarrollo web empresarial especializado en soluciones personalizadas para PyMEs y empresas argentinas.
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.1.0-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Latest-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-Latest-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
-## 🚀 Tecnologías
+## 📋 Descripción
 
-- **Next.js 15** - Framework React con App Router
-- **React 19** - Biblioteca de interfaces de usuario
-- **TypeScript** - Tipado estático
-- **Tailwind CSS** - Framework CSS utilitario
-- **Framer Motion** - Animaciones fluidas
-- **Web3Forms** - Gestión de formularios
+**PmDevOps** es un sitio web moderno para consultoría en DevOps y desarrollo web, construido con las últimas tecnologías web. Ofrece servicios especializados en transformación digital, automatización de procesos y desarrollo de soluciones web escalables.
+
+### 🎯 Servicios Principales
+
+- 🔧 **DevOps & Automatización** - Implementación de pipelines CI/CD
+- ☁️ **Cloud Computing** - Migración y optimización en la nube  
+- 🛡️ **Ciberseguridad** - Auditorías y implementación de seguridad
+- 📧 **Gestión técnica de emails corporativos** - Configuración y mantenimiento
+- 🌐 **Desarrollo Web** - Sitios web modernos y aplicaciones
+- 📊 **Consultoría IT** - Asesoramiento tecnológico especializado
+
+## �️ Tecnologías
+
+### Frontend
+- **Next.js 15.5.0** - Framework de React para producción
+- **React 19.1.0** - Biblioteca de interfaces de usuario
+- **TypeScript** - Superset tipado de JavaScript
+- **Tailwind CSS** - Framework de CSS utilitario
+- **Framer Motion** - Librería de animaciones
+
+### Herramientas de Desarrollo
+- **ESLint** - Linter para JavaScript/TypeScript
+- **Prettier** - Formateador de código
+- **PostCSS** - Herramienta de transformación CSS
+- **Turbopack** - Bundler de alta velocidad
+
+### Integración de APIs
+- **Web3Forms** - Servicio de formularios sin backend
+- **Configuración segura** - Variables de entorno protegidas
+
+## 🚀 Inicio Rápido
+
+### Prerrequisitos
+- Node.js 18+ 
+- npm o yarn
+- Git
+
+### Instalación
+
+1. **Clonar el repositorio**
+```bash
+git clone https://github.com/patohed/pmdevcode.git
+cd pmdevcode
+```
+
+2. **Instalar dependencias**
+```bash
+npm install
+```
+
+3. **Configurar variables de entorno**
+```bash
+# Copiar el archivo de ejemplo
+cp .env.example .env.local
+
+# Editar .env.local con tus configuraciones
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=tu_api_key_aqui
+```
+
+4. **Ejecutar en modo desarrollo**
+```bash
+npm run dev
+```
+
+5. **Abrir en el navegador**
+   - Visita: http://localhost:3000
 
 ## 🌟 Características
-
-- ✅ **Sitios corporativos e institucionales** profesionales
-- ✅ **E-commerce completo** para PyMEs
-- ✅ **Sistemas de gestión web** personalizados  
-- ✅ **Gestión técnica de emails corporativos**
-- ✅ **Consultoría en seguridad digital**
 - ✅ **Optimización SEO avanzada**
 - ✅ **Diseño responsive** y moderno
+### ✨ Diseño Moderno
+- 🎭 **Diseño responsive** - Adaptable a todos los dispositivos
+- 🌙 **Animaciones fluidas** - Transiciones suaves con Framer Motion
+- 🎨 **UI/UX optimizada** - Interfaz intuitiva y profesional
+- 🔄 **Componentes dinámicos** - Interacciones avanzadas
 - ✅ **Formularios de contacto** integrados
 - ✅ **FAQ interactivo** por categorías
+
+### 🔐 Seguridad
+- 🛡️ **Headers de seguridad** - CSP, HSTS, XSS Protection
+- 🔒 **Variables de entorno** - Configuración segura
+- 🚫 **Validación de formularios** - Protección contra spam
+- 🔍 **Auditorías regulares** - Análisis de vulnerabilidades
+
+### ⚡ Rendimiento
+- 🚀 **Turbopack** - Compilación ultra-rápida
+- 📦 **Optimización de bundle** - Código dividido automáticamente
+- 🖼️ **Optimización de imágenes** - Lazy loading y compresión
+- 📈 **SEO optimizado** - Meta tags y structured data
 
 ## 🛠 Servicios Destacados
 
@@ -37,10 +111,59 @@ Sitio web profesional de **Dev Code** - Desarrollo web empresarial especializado
 - Stack tecnológico moderno
 - Garantía de 60 días
 
-## 📱 Estructura del Proyecto
+## � Estructura del Proyecto
 
 ```
 pmdevcode/
+├── app/                    # App Router de Next.js 13+
+│   ├── consultoria/       # Página de servicios de consultoría
+│   ├── contacto/          # Página de contacto
+│   ├── faq/              # Preguntas frecuentes
+│   ├── portfolio/        # Portafolio de proyectos
+│   ├── servicios/        # Página de servicios
+│   └── globals.css       # Estilos globales
+├── components/            # Componentes reutilizables
+│   ├── AnimatedBackground.tsx
+│   ├── ConsultoriaForm.tsx
+│   ├── FAQ.tsx
+│   ├── Header.tsx
+│   └── ...
+├── lib/                  # Utilidades y configuraciones
+├── public/              # Archivos estáticos
+├── scripts/            # Scripts de utilidad
+└── next.config.js     # Configuración de Next.js
+```
+
+## 📝 Scripts Disponibles
+
+```bash
+# Desarrollo
+npm run dev          # Iniciar servidor de desarrollo
+npm run dev:turbo    # Desarrollo con Turbopack
+
+# Producción
+npm run build        # Compilar para producción
+npm run start        # Iniciar servidor de producción
+
+# Código
+npm run lint         # Ejecutar ESLint
+npm run lint:fix     # Corregir errores de ESLint
+
+# Utilidades
+npm run clean        # Limpiar archivos de compilación
+```
+
+## 🌐 Despliegue
+
+### Vercel (Recomendado)
+1. Conecta tu repositorio con [Vercel](https://vercel.com)
+2. Configura las variables de entorno
+3. Despliega automáticamente con cada push
+
+### Otros Proveedores
+- **Netlify** - Despliegue estático
+- **AWS Amplify** - Hosting escalable
+- **Railway** - Despliegue con base de datos
 ├── app/                    # App Router de Next.js
 │   ├── contacto/          # Página de contacto
 │   ├── consultoria/       # Formulario de consultoría IT
@@ -56,33 +179,44 @@ pmdevcode/
 └── public/              # Archivos estáticos
 ```
 
-## 🔧 Instalación y Configuración Segura
+## 🤝 Contribución
 
-### **⚡ Setup Rápido**
+¡Las contribuciones son bienvenidas! Por favor:
 
-```bash
-# 1. Clonar repositorio
-git clone https://github.com/[tu-usuario]/pmdevcode.git
-cd pmdevcode
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
-# 2. Instalar dependencias
-npm install
+## 📄 Licencia
 
-# 3. Configurar variables de entorno (CRÍTICO)
-cp .env.example .env.local
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
 
-# 4. Completar .env.local con tus credenciales
-# Ver sección "Variables de Entorno" abajo
+## 👨‍💻 Autor
 
-# 5. Ejecutar en desarrollo
-npm run dev
+**Patricio Millán** - *PmDevOps*
+- 🌐 Web: [pmdevops.com](https://pmdevops.com)
+- 📧 Email: contacto@pmdevops.com
+- 💼 LinkedIn: [Patricio Millán](https://linkedin.com/in/patricio-millan)
+- 🐙 GitHub: [@patohed](https://github.com/patohed)
 
-# 6. Build para producción
-npm run build
-npm run start
-```
+## 🙏 Agradecimientos
 
-### **🔒 Variables de Entorno (OBLIGATORIO)**
+- [Next.js Team](https://nextjs.org/) - Por el increíble framework
+- [Vercel](https://vercel.com/) - Por la plataforma de despliegue
+- [Tailwind CSS](https://tailwindcss.com/) - Por el framework CSS
+- [Framer Motion](https://www.framer.com/motion/) - Por las animaciones
+
+---
+
+<div align="center">
+
+**⭐ Si te gusta este proyecto, ¡dale una estrella en GitHub! ⭐**
+
+Made with ❤️ by [PmDevOps](https://github.com/patohed)
+
+</div>
 
 Este proyecto requiere configuración de variables de entorno para funcionar correctamente:
 
