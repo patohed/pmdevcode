@@ -109,17 +109,17 @@ function DraggableCredentialCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: credential.delay }}
       whileHover={{ scale: isDragging ? 1 : 1.05, y: isDragging ? 0 : -5 }}
-      draggable
-      onDragStart={(e: React.DragEvent<HTMLDivElement>) => onDragStart(e, index)}
-      onDragOver={onDragOver}
-      onDrop={(e: React.DragEvent<HTMLDivElement>) => onDrop(e, index)}
       className={`
         bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20 
         hover:bg-white/20 hover:border-white/30 transition-all duration-300 
         text-center group cursor-move select-none relative
         ${isDragging ? 'opacity-50 scale-105 rotate-3 z-50' : ''}
-        ${isOver ? 'border-blue-400 bg-blue-500/20' : ''}
+        ${isOver ? 'ring-2 ring-blue-400/50 bg-blue-500/10' : ''}
       `}
+      draggable
+      onDragStart={(e: React.DragEvent<HTMLDivElement>) => onDragStart(e, index)}
+      onDragOver={(e: React.DragEvent<HTMLDivElement>) => onDragOver(e)}
+      onDrop={(e: React.DragEvent<HTMLDivElement>) => onDrop(e, index)}
     >
       {/* Indicador de drag horizontal */}
       <div className="absolute top-2 right-2 opacity-60 group-hover:opacity-100 transition-opacity">
