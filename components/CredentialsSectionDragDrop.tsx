@@ -116,11 +116,15 @@ function DraggableCredentialCard({
         ${isDragging ? 'opacity-50 scale-105 rotate-3 z-50' : ''}
         ${isOver ? 'ring-2 ring-blue-400/50 bg-blue-500/10' : ''}
       `}
-      draggable
-      onDragStart={(e: React.DragEvent<HTMLDivElement>) => onDragStart(e, index)}
-      onDragOver={(e: React.DragEvent<HTMLDivElement>) => onDragOver(e)}
-      onDrop={(e: React.DragEvent<HTMLDivElement>) => onDrop(e, index)}
     >
+      {/* Wrap content in a div with native drag events */}
+      <div
+        draggable
+        onDragStart={(e) => onDragStart(e, index)}
+        onDragOver={(e) => onDragOver(e)}
+        onDrop={(e) => onDrop(e, index)}
+        className="w-full h-full"
+      >
       {/* Indicador de drag horizontal */}
       <div className="absolute top-2 right-2 opacity-60 group-hover:opacity-100 transition-opacity">
         <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -140,6 +144,7 @@ function DraggableCredentialCard({
       <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
         {credential.description}
       </p>
+      </div> {/* Closing div for drag wrapper */}
     </motion.div>
   );
 }
