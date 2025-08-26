@@ -60,7 +60,7 @@ Después del deployment, necesitarás:
 El sitio estará disponible en:
 - **Producción**: `https://www.pmdevcode.com.ar`
 - **Alternativo**: `https://pmdevcode.com.ar`
-- **Puerto interno**: `3000` (manejado por PM2)
+- **Puerto interno**: `3001` (manejado por PM2)
 
 ## 📊 Comandos de Monitoreo
 
@@ -157,7 +157,7 @@ systemctl restart nginx
 
 ## 📱 Verificación Post-Deployment
 
-1. ✅ **Verificar aplicación**: `curl http://localhost:3000`
+1. ✅ **Verificar aplicación**: `curl http://localhost:3001`
 2. ✅ **Verificar Nginx**: `curl -I http://tu-dominio.com`
 3. ✅ **Verificar SSL**: `curl -I https://www.pmdevcode.com.ar`
 4. ✅ **Verificar PM2**: `pm2 status`
@@ -179,5 +179,6 @@ pm2 restart pmdevcode
 **✅ DEPLOYMENT READY**: Tu aplicación está lista para ser desplegada en el VPS de Banahosting.
 
 **Dominio objetivo**: `www.pmdevcode.com.ar`
+**Puerto interno**: `3001` (PM2 + Nginx)
 
-**Next Steps**: Ejecuta `bash deploy.sh` en el VPS para completar el deployment.
+**Next Steps**: Ejecuta `bash final-deploy.sh` en el VPS para completar el deployment.
