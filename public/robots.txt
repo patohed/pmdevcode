@@ -1,0 +1,70 @@
+# Robots.txt para Dev Code - Desarrollo Web Profesional
+# https://www.pmdevcode.com.ar/robots.txt
+
+User-agent: *
+Allow: /
+
+# Permitir acceso a todos los bots principales
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Bloquear directorios administrativos y archivos sensibles
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /.env*
+Disallow: /error/
+Disallow: /404
+Disallow: /500
+
+# Permitir acceso a recursos estáticos importantes
+Allow: /favicon.ico
+Allow: /logo-codedev.png
+Allow: /og-image.png
+Allow: /_next/static/
+Allow: /public/
+
+# Crawl delay para evitar sobrecarga del servidor
+Crawl-delay: 1
+
+# Sitemap principal
+Sitemap: https://www.pmdevcode.com.ar/sitemap.xml
+
+# Sitemaps adicionales (si los implementas en el futuro)
+# Sitemap: https://www.pmdevcode.com.ar/sitemap-pages.xml
+# Sitemap: https://www.pmdevcode.com.ar/sitemap-services.xml
+# Sitemap: https://www.pmdevcode.com.ar/sitemap-portfolio.xml
+
+# Información adicional para desarrolladores
+# Contacto del webmaster: info@pmdevcode.com.ar
+# Desarrollado por: pm (Patricio Millan) - pmdevop
+# Última actualización: 2024-12-23

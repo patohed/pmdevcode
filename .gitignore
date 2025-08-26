@@ -1,41 +1,215 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
+# Dependencies
+node_modules/
 /.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+.pnp.js
+.yarn/install-state.gz
 
-# testing
+# Testing
 /coverage
+*.lcov
 
-# next.js
+# Next.js
 /.next/
 /out/
 
-# production
+# Production builds
 /build
+/dist
 
-# misc
+# Environment variables (CRÍTICO)
+.env*
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+.vercel.json
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# ESLint
+.eslintcache
+
+# Turbo
+.turbo
+
+# IDE/Editor files
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+
+# 🔐 SECURITY PATTERNS - CRÍTICOS
+# Archivos temporales con secretos
+*_temp.*
+*_localhost.*
+*_secure.*
+*_backup.*
+*_old.*
+*.tmp
+*.backup
+*.bak
+
+# Logs y archivos de debug
+*.log
+logs/
+debug/
+.nyc_output/
+
+# Archivos de configuración sensibles
+config.json
+secrets.json
+private.pem
+*.key
+*.p12
+*.pfx
+
+# Certificados y credenciales
+ssl/
+certs/
+*.crt
+*.cert
+*.cer
+
+# Archivos de base de datos
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache y archivos temporales del sistema
 .DS_Store
-*.pem
+Thumbs.db
+desktop.ini
 
-# debug
+# NPM y Yarn
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.npm/
+.yarn-integrity
+
+# Archivos de auditoría
+security-audit-report.md
+audit.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# vercel
-.vercel
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# API Keys y Secrets (CRÍTICO DE SEGURIDAD)
+**/secrets/
+**/private/
+**/*secret*
+**/*key*
+**/*token*
+credentials.json
+auth.json
+
+# Archivos temporales del proyecto
+components/*_temp.tsx
+components/*_localhost.tsx
+components/*_secure.tsx
+components/*_new.tsx
+components/*Temp.tsx
+
+# Backups
+*.bak
+*.backup
+*.old
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Certificates
+*.pem
+*.key
+*.cert
+*.crt
+
+# Local development
+.env.example.local
