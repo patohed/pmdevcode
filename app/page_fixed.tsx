@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -164,9 +165,11 @@ export default function Home() {
               className="bg-white p-8 rounded-2xl shadow-lg border border-orange-100 hover:shadow-xl transition-all"
             >
               <div className="flex items-center mb-6">
-                <img 
+                <Image 
                   src="https://randomuser.me/api/portraits/men/32.jpg" 
                   alt="Cliente" 
+                  width={64}
+                  height={64}
                   className="w-16 h-16 rounded-full border-4 border-orange-100 mr-4"
                 />
                 <div>
@@ -195,9 +198,11 @@ export default function Home() {
               className="bg-white p-8 rounded-2xl shadow-lg border border-pink-100 hover:shadow-xl transition-all"
             >
               <div className="flex items-center mb-6">
-                <img 
+                <Image 
                   src="https://randomuser.me/api/portraits/women/44.jpg" 
                   alt="Cliente" 
+                  width={64}
+                  height={64}
                   className="w-16 h-16 rounded-full border-4 border-pink-100 mr-4"
                 />
                 <div>
@@ -226,9 +231,11 @@ export default function Home() {
               className="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 hover:shadow-xl transition-all"
             >
               <div className="flex items-center mb-6">
-                <img 
+                <Image 
                   src="https://randomuser.me/api/portraits/men/65.jpg" 
                   alt="Cliente" 
+                  width={64}
+                  height={64}
                   className="w-16 h-16 rounded-full border-4 border-purple-100 mr-4"
                 />
                 <div>

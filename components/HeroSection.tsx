@@ -44,7 +44,7 @@ export default function HeroSection() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }
+      transition: { duration: 0.8, ease: "easeOut" }
     }
   };
 

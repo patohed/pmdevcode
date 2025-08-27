@@ -1,13 +1,5 @@
 import Link from "next/link";
 
-interface NavigationProps {
-  currentModel: string;
-  models: Array<{
-    id: string;
-    name: string;
-  }>;
-}
-
 const formModels = [
   { id: "minimalista", name: "MCP-A Minimalista" },
   { id: "wizard", name: "MCP-B Wizard" },

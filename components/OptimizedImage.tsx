@@ -32,6 +32,7 @@ export default function OptimizedImage({
   const [hasError, setHasError] = useState(false);
 
   // Generar blur data URL si no se proporciona
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const generateBlurDataURL = (w: number, h: number) => {
     const canvas = document.createElement('canvas');
     canvas.width = w;
