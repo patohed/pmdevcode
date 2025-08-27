@@ -218,10 +218,11 @@ export default function SolutionsBySector() {
               onClick={() => handleWhatsAppClick("Hola! No encontré mi sector específico en la lista. Me gustaría consultar sobre una solución personalizada para mi organización.")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all inline-flex items-center space-x-2"
+              className="bg-white text-blue-600 px-4 sm:px-8 py-2 sm:py-3 rounded-full font-semibold hover:shadow-lg transition-all inline-flex items-center space-x-1 sm:space-x-2"
             >
-              <Icon iconKey="whatsapp" className="w-5 h-5" />
-              <span>Consultar Solución Personalizada</span>
+              <Icon iconKey="whatsapp" className="w-5 h-5 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base hidden sm:inline">Consultar Solución Personalizada</span>
+              <span className="text-sm sm:hidden">Consultar Solución</span>
             </motion.button>
           </div>
         </motion.div>

@@ -36,47 +36,60 @@ const benefits = [
 
 export default function Contact() {
   return (
-    <section id="contacto" className="py-20 px-4 bg-white">
+    <section id="contacto" className="py-16 sm:py-20 lg:py-24 px-4 bg-white">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        {/* Header optimizado para móvil */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 px-2 sm:px-0">
             ¿Listo para Transformar tu Organización?
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto px-2 sm:px-0">
             Agenda una reunión comercial y recibí una propuesta técnica personalizada en 48 horas
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="space-y-8">
+        {/* Grid optimizado para móvil - stack vertical en móvil */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+          {/* Benefits section - optimizado para móvil */}
+          <div className="order-2 lg:order-1">
+            <div className="space-y-6 sm:space-y-8">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start space-x-4">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${benefit.gradient} rounded-xl flex items-center justify-center flex-shrink-0`}>
+                <motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-start space-x-3 sm:space-x-4"
+                >
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${benefit.gradient} rounded-xl flex items-center justify-center flex-shrink-0`}>
                     {benefit.icon}
                   </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 text-xl mb-2">{benefit.title}</h3>
-                    <p className="text-slate-600">{benefit.description}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-gray-900 text-lg sm:text-xl mb-2 leading-tight">{benefit.title}</h3>
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{benefit.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
           
+          {/* Contact form - optimizado para móvil */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-gradient-to-br from-blue-50 to-slate-50 p-8 rounded-2xl border border-slate-200"
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-blue-50 to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 order-1 lg:order-2"
           >
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+            <form className="space-y-4 sm:space-y-6">
+              {/* Grid que se vuelve stack en móvil */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Nombre completo *</label>
                   <input 
                     type="text" 
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition-all outline-none" 
+                    className="w-full px-3 sm:px-4 py-3 text-sm sm:text-base rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition-all outline-none" 
                     placeholder="Tu nombre"
                     required
                   />
@@ -85,14 +98,14 @@ export default function Contact() {
                   <label className="block text-sm font-medium text-slate-700 mb-2">Cargo / Posición *</label>
                   <input 
                     type="text" 
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition-all outline-none" 
+                    className="w-full px-3 sm:px-4 py-3 text-sm sm:text-base rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition-all outline-none" 
                     placeholder="Ej: Gerente General"
                     required
                   />
                 </div>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Email corporativo *</label>
                   <input 

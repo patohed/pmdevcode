@@ -5,6 +5,7 @@ import { generatePageMetadata } from "../utils/seo-config";
 import Script from "next/script";
 import { LocalBusinessSchema } from "../components/SEO/LocalBusiness";
 import { PerformanceOptimizer } from "../components/PerformanceOptimizer";
+import FloatingWhatsApp from "../components/FloatingWhatsApp";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,9 @@ export default function RootLayout({
         <PerformanceOptimizer />
         
         {children}
+        
+        {/* Botón flotante de WhatsApp */}
+        <FloatingWhatsApp />
         
         {/* Google Analytics */}
         <Script

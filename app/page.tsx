@@ -5,6 +5,7 @@ import PricingPackages from '@/components/PricingPackages';
 import ProfessionalProcess from '@/components/ProfessionalProcess';
 import Testimonials from '@/components/Testimonials';
 import CredentialsSection from '@/components/CredentialsSectionDragDrop';
+import CredentialsSectionMobile from '@/components/CredentialsSectionMobile';
 import CompactFAQ from '@/components/CompactFAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -75,7 +76,14 @@ export default function Home() {
         <PricingPackages />
         <ProfessionalProcess />
         <Testimonials />
-        <CredentialsSection />
+        {/* Solo mostrar drag and drop en pantallas grandes (desktop) */}
+        <div className="hidden xl:block">
+          <CredentialsSection />
+        </div>
+        {/* Versión móvil y tablet de las credenciales */}
+        <div className="block xl:hidden">
+          <CredentialsSectionMobile />
+        </div>
         <CompactFAQ />
         <Contact />
       </main>

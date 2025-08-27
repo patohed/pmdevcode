@@ -84,35 +84,42 @@ const services = [
 export default function Services() {
   return (
     <>
-      <section id="servicios" className="py-20 px-4 bg-white">
+      <section id="servicios" className="py-16 sm:py-20 lg:py-24 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          {/* Header optimizado para móvil */}
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 px-2 sm:px-0">
               Servicios Web Profesionales Personalizados
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto px-2 sm:px-0">
               Desarrollamos servicios web especializados y personalizados que potencian el crecimiento de tu organización
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          {/* Grid optimizado para móvil - una columna en móvil, 2 en tablet, 4 en desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: service.delay }}
-                className={`bg-gradient-to-br ${service.gradient} p-8 rounded-2xl border ${service.border} hover:shadow-lg transition-all group`}
+                viewport={{ once: true, margin: "-50px" }}
+                className={`bg-gradient-to-br ${service.gradient} p-6 sm:p-8 rounded-2xl border ${service.border} hover:shadow-lg transition-all group`}
               >
-                <div className={`w-12 h-12 bg-gradient-to-r ${service.iconGradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r ${service.iconGradient} rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform`}>
                   {service.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-slate-600 leading-relaxed mb-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">{service.title}</h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-4 sm:mb-6">
                   {service.description}
                 </p>
-                <ul className="space-y-2 text-sm text-slate-600">
+                <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
                   {service.features.map((feature, idx) => (
-                    <li key={idx}>{feature}</li>
+                    <li key={idx} className="flex items-start">
+                      <span className="text-green-600 mr-2 flex-shrink-0 text-sm">✓</span>
+                      <span className="leading-relaxed">{feature.replace('✓ ', '')}</span>
+                    </li>
                   ))}
                 </ul>
               </motion.div>
