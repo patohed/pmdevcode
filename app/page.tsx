@@ -1,5 +1,6 @@
 import HeroSection from "../components/HeroSection";
 import Services from '@/components/Services';
+import TrustedCompanies from '@/components/TrustedCompanies';
 import SolutionsBySector from '@/components/SolutionsBySector';
 import PricingPackages from '@/components/PricingPackages';
 import ProfessionalProcess from '@/components/ProfessionalProcess';
@@ -72,6 +73,7 @@ export default function Home() {
       <main role="main">
         <HeroSection />
         <Services />
+        <TrustedCompanies />
         <SolutionsBySector />
         <PricingPackages />
         <ProfessionalProcess />

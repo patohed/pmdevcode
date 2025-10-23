@@ -4,44 +4,28 @@ import Image from "next/image";
 
 const testimonials = [
   {
-    name: "María Elena Rodríguez",
-    position: "Directora - Colegio San Patricio",
+    name: "Pía",
+    position: "CEO - Eupi Marketing",
     image: "https://randomuser.me/api/portraits/women/32.jpg",
-    quote: "Implementaron un sistema completo de gestión académica. Mejoramos la comunicación con padres en un 250% y automatizamos procesos administrativos.",
+    quote: "Nos ayudan a desarrollar herramientas personalizadas, mantener la seguridad de nuestro equipo y la integridad de nuestros clientes, además de crear sitios web creativos y profesionales que realmente representan nuestra marca.",
     border: "border-blue-200",
     delay: 0.1
   },
   {
-    name: "Carlos Mendoza",
-    position: "Gerente General - Naval Motor", 
+    name: "Federico",
+    position: "Manager IT - Naval Motor", 
     image: "https://randomuser.me/api/portraits/men/44.jpg",
-    quote: "Su portal B2B revolucionó nuestra relación con proveedores. Redujimos tiempos administrativos en un 50% y aumentamos la eficiencia operativa.",
+    quote: "Colaboran activamente en el testeo de seguridad, detección de bugs y validación de funcionalidad de nuestro sitio web. Su compromiso con soluciones digitales adaptadas a nuestros servicios es destacable.",
     border: "border-green-200",
     delay: 0.2
   },
   {
-    name: "Ana Lucía Vega",
-    position: "Presidenta - Cámara PyME Industrial",
-    image: "https://randomuser.me/api/portraits/women/65.jpg", 
-    quote: "El portal de membresías y comunicación institucional aumentó la participación de socios en un 180%. Herramienta fundamental para nuestra gestión.",
+    name: "Pablo",
+    position: "Owner - VTI Logística",
+    image: "https://randomuser.me/api/portraits/men/65.jpg", 
+    quote: "Comprometidos con el desarrollo de soluciones digitales que fortalecen nuestra empresa desde hace años. Su conocimiento técnico y acompañamiento constante hacen la diferencia.",
     border: "border-orange-200",
     delay: 0.3
-  },
-  {
-    name: "Roberto Silva",
-    position: "Director - Agencia Mística",
-    image: "https://randomuser.me/api/portraits/men/28.jpg", 
-    quote: "Su e-commerce integrado con facturación AFIP nos permitió duplicar ventas online y optimizar toda la gestión fiscal automáticamente.",
-    border: "border-purple-200",
-    delay: 0.4
-  },
-  {
-    name: "Patricia González",
-    position: "Coordinadora - Eupi Marketing",
-    image: "https://randomuser.me/api/portraits/women/38.jpg", 
-    quote: "El CRM integrado nos dio visibilidad completa del funnel comercial. Aumentamos conversión en un 300% con seguimiento automatizado de leads.",
-    border: "border-indigo-200",
-    delay: 0.5
   }
 ];
 

@@ -21,9 +21,9 @@ export default function HeroSection() {
   }, []);
 
   const handleWhatsAppClick = () => {
-    // Placeholder para el número de WhatsApp - reemplazar con el número real
-    const phoneNumber = "5491234567890"; // Reemplazar con tu número
-    const message = "¡Hola! Vengo desde su sitio web y me interesa conocer más sobre sus servicios de desarrollo web. ¿Podrían brindarme información?";
+    // Número de WhatsApp real de PMDevCode - reemplazar con el número correcto
+    const phoneNumber = "5491234567890"; // ⚠️ REEMPLAZAR CON EL NÚMERO REAL
+    const message = "¡Hola! Vengo desde pmdevcode.com.ar y me interesa conocer más sobre sus servicios de desarrollo web profesional. ¿Podrían brindarme información personalizada sobre mi proyecto?";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -151,11 +151,11 @@ export default function HeroSection() {
               boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)"
             }}
             whileTap={{ scale: 0.95 }}
-            className="group bg-gradient-to-r from-green-600 via-green-700 to-green-600 hover:from-green-700 hover:via-green-800 hover:to-green-700 text-white px-4 sm:px-8 py-2 sm:py-3 rounded-full hover:shadow-2xl transition-all duration-300 font-semibold flex items-center space-x-1 sm:space-x-2"
+            className="group bg-gradient-to-r from-green-600 via-green-700 to-green-600 hover:from-green-700 hover:via-green-800 hover:to-green-700 text-white px-3 sm:px-6 py-2 sm:py-3 rounded-full hover:shadow-2xl transition-all duration-300 font-semibold flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm"
           >
-            <WhatsAppIcon className="w-5 h-5 sm:w-4 sm:h-4" />
-            <span className="hidden sm:inline text-sm sm:text-base">¡Envíanos un Mensaje!</span>
-            <span className="sm:hidden text-xs">WhatsApp</span>
+            <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+            <span className="hidden xs:inline sm:hidden lg:inline whitespace-nowrap">Consultar</span>
+            <span className="xs:hidden sm:inline lg:hidden whitespace-nowrap">WhatsApp</span>
           </motion.button>
         </motion.div>
       </nav>

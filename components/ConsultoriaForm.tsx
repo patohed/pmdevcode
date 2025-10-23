@@ -29,7 +29,7 @@ export default function ConsultoriaForm() {
     console.log('🔍 Probando conexión con Web3Forms desde localhost...');
     
     const testData = new FormData();
-    testData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '');
+    testData.append('access_key', '785b22ca-f549-4342-b273-3dface70aeed');
     testData.append('name', 'Test Usuario Localhost');
     testData.append('email', 'test@pmdevcode.com.ar');
     testData.append('message', 'Prueba de conexión desde desarrollo local (localhost:3003)');
@@ -124,12 +124,12 @@ export default function ConsultoriaForm() {
     
     // 🔧 Preparar datos para Web3Forms
     const submissionData = new FormData();
-    submissionData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '');
+    submissionData.append('access_key', '785b22ca-f549-4342-b273-3dface70aeed');
     
     // Campos estándar requeridos
     submissionData.append('name', (formData.get('nombre') as string || '').trim());
     submissionData.append('email', (formData.get('email') as string || '').trim());
-    submissionData.append('subject', '🔥 Consulta Asesoría IT - PmDevOps');
+    submissionData.append('subject', '🔥 Consulta Asesoría IT - PmDevCode');
     
     // Mensaje completo formateado
     const mensaje = `

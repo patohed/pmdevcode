@@ -25,9 +25,9 @@ export default function FloatingWhatsApp() {
   }, []);
 
   const handleWhatsAppClick = () => {
-    // Placeholder para el número de WhatsApp - reemplazar con el número real
-    const phoneNumber = "5491234567890"; // Reemplazar con tu número
-    const message = "¡Hola! Vi su sitio web y me interesa conocer más sobre sus servicios de desarrollo web. ¿Podrían brindarme información?";
+    // Número de WhatsApp real de PMDevCode - reemplazar con el número correcto
+    const phoneNumber = "5491234567890"; // ⚠️ REEMPLAZAR CON EL NÚMERO REAL
+    const message = "¡Hola! Vi su sitio web pmdevcode.com.ar y me interesa conocer más sobre sus servicios de desarrollo web profesional. ¿Podrían brindarme información personalizada?";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     setShowTooltip(false);

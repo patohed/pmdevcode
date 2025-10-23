@@ -21,9 +21,14 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white/90 backdrop-blur-md border-b border-blue-200 sticky top-0 z-50 relative">
-      <AnimatedBackground />
-      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center relative z-10">
+    <header className="bg-white/95 backdrop-blur-lg border-b border-blue-200 sticky top-0 z-50 relative shadow-sm">
+      {/* Fondo animado sutil - ahora con opacidad muy baja */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <AnimatedBackground />
+      </div>
+      {/* Overlay blanco para asegurar que no se vea nada detrás */}
+      <div className="absolute inset-0 bg-white/80 backdrop-blur-xl pointer-events-none" />
+      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center relative z-20">
         <motion.div
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}

@@ -169,7 +169,7 @@ export default function WebProjectForm() {
     
     // Preparar datos para Web3Forms
     const submissionData = new FormData();
-    submissionData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '');
+    submissionData.append('access_key', '785b22ca-f549-4342-b273-3dface70aeed');
     
     // Campos estándar requeridos
     submissionData.append('name', formData.nombreCompleto);
