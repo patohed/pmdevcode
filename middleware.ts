@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { trackPageView } from './lib/analytics';
 
 /**
  * 📊 Middleware de Analytics - Privacy-First
  * 
  * Registra vistas de página sin cookies ni tracking invasivo
  * Solo guarda: ruta, timestamp, referer (origen del tráfico)
+ * 
+ * NOTA: El tracking real se hace vía API route para evitar problemas
+ * con Edge Runtime que no soporta módulos de Node.js
  */
 
 export async function middleware(request: NextRequest) {
@@ -25,9 +27,19 @@ export async function middleware(request: NextRequest) {
     const referer = request.headers.get('referer') || undefined;
     const userAgent = request.headers.get('user-agent') || undefined;
     
-    // Track en background (no bloquea la respuesta)
-    trackPageView(pathname, referer, userAgent).catch(err => {
-      console.error('Analytics tracking error:', err);
+    // Track en background via API route (no bloquea la respuesta)
+    // Usamos fetch() que SÍ está disponible en Edge Runtime
+    const baseUrl = request.nextUrl.origin;
+    fetch(`${baseUrl}/api/analytics/track`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        path: pathname,
+        referer,
+        userAgent,
+      }),
+    }).catch(() => {
+      // Silently fail - no bloqueamos la página si falla el tracking
     });
   }
   
