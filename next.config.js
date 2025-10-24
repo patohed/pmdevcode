@@ -1,35 +1,69 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Ocultar header X-Powered-By que revela Next.js
+  poweredByHeader: false,
+  
   images: {
-    domains: ['randomuser.me'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'randomuser.me',
+      },
+    ],
   },
   
-  // 🔐 SECURITY HEADERS - Protección contra ataques
+  // 🔐 SECURITY HEADERS COMPLETOS - Protección contra ataques
   async headers() {
     return [
       {
         // Aplicar a todas las rutas
-        source: '/(.*)',
+        source: '/:path*',
         headers: [
+          // CSP - Content Security Policy (Protección XSS)
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://api.web3forms.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' https://fonts.gstatic.com data:",
+              "img-src 'self' data: https: blob:",
+              "connect-src 'self' https://www.google-analytics.com https://api.web3forms.com https://wa.me",
+              "frame-ancestors 'none'",
+              "base-uri 'self'",
+              "form-action 'self' https://api.web3forms.com",
+              "upgrade-insecure-requests"
+            ].join('; ')
+          },
+          // HSTS - Forzar HTTPS
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload'
+          },
+          // Prevenir clickjacking
           {
             key: 'X-Frame-Options',
             value: 'DENY'
           },
+          // Prevenir MIME sniffing
           {
             key: 'X-Content-Type-Options', 
             value: 'nosniff'
           },
+          // Política de referrer
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin'
           },
+          // Protección XSS legacy
           {
             key: 'X-XSS-Protection',
             value: '1; mode=block'
           },
+          // Permisos restrictivos
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()'
+            value: 'camera=(), microphone=(), geolocation=(), payment=()'
           }
         ]
       }
