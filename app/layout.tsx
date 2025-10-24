@@ -30,6 +30,9 @@ export default function RootLayout({
   return (
     <html lang="es-AR">
       <head>
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="TzDEnfQV5QmqLQym6Y0S2U2BIl5cmuYxhFNE0wAD7aU" />
+        
         {/* Preconnect para mejorar performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
