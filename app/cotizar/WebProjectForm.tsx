@@ -240,6 +240,14 @@ ${formData.comentarios || 'Sin comentarios adicionales'}
       if (data.success) {
         setSubmitStatus('success');
         setLastSubmissionTime(Date.now());
+        
+        // 📊 Registrar en analytics (no bloquea si falla)
+        fetch('/api/analytics/track-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ formType: 'cotizar' })
+        }).catch(err => console.warn('Analytics tracking failed:', err));
+        
         console.log('✅ Propuesta web enviada exitosamente!');
       } else {
         throw new Error(data.message || 'Error al enviar el formulario');

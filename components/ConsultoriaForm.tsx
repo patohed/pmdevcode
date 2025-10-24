@@ -135,6 +135,14 @@ ${(formData.get('descripcion') as string || '').trim()}
       if (data.success) {
         setSubmitStatus('success');
         setLastSubmissionTime(Date.now());
+        
+        // 📊 Registrar en analytics (no bloquea si falla)
+        fetch('/api/analytics/track-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ formType: 'consultoria' })
+        }).catch(err => console.warn('Analytics tracking failed:', err));
+        
         e.currentTarget.reset();
         console.log('✅ Email enviado exitosamente!');
       } else {

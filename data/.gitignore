@@ -1,0 +1,8 @@
+# 📊 Analytics Data Directory
+# Este directorio almacena las métricas de analytics
+
+# Ignorar archivo de datos (contiene información sensible)
+analytics.json
+
+# Permitir el directorio vacío
+!.gitkeep

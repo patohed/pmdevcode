@@ -174,6 +174,14 @@ ${formData.descripcion}
       if (data.success) {
         setSubmitStatus('success');
         setLastSubmissionTime(Date.now());
+        
+        // 📊 Registrar en analytics (no bloquea si falla)
+        fetch('/api/analytics/track-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ formType: 'contact' })
+        }).catch(err => console.warn('Analytics tracking failed:', err));
+        
         // Limpiar formulario
         setFormData({
           nombre: '',
