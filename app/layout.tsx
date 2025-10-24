@@ -6,7 +6,6 @@ import Script from "next/script";
 import { LocalBusinessSchema } from "../components/SEO/LocalBusiness";
 import { PerformanceOptimizer } from "../components/PerformanceOptimizer";
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
-import CookieConsent from "../components/CookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,10 +36,6 @@ export default function RootLayout({
         
         {/* Preload recursos críticos */}
         <link rel="preload" href="/logo-codedev.png" as="image" />
-        
-        {/* DNS Prefetch para recursos externos */}
-        <link rel="dns-prefetch" href="//www.google-analytics.com" />
-        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -55,9 +50,6 @@ export default function RootLayout({
         
         {/* Botón flotante de WhatsApp */}
         <FloatingWhatsApp />
-        
-        {/* 🍪 GDPR Cookie Consent Banner - Carga GA solo si el usuario acepta */}
-        <CookieConsent />
         
         {/* Schema.org para WebSite (búsqueda) */}
         <Script
