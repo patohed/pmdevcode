@@ -24,40 +24,7 @@ export default function ConsultoriaForm() {
     return timeDiff > 30000; // 30 segundos entre envíos
   }, [lastSubmissionTime]);
 
-  // 🔍 Test rápido de la API (funciona desde localhost)
-  const testAPI = async () => {
-    console.log('🔍 Probando conexión con Web3Forms desde localhost...');
-    
-    const testData = new FormData();
-    testData.append('access_key', '785b22ca-f549-4342-b273-3dface70aeed');
-    testData.append('name', 'Test Usuario Localhost');
-    testData.append('email', 'test@pmdevcode.com.ar');
-    testData.append('message', 'Prueba de conexión desde desarrollo local (localhost:3003)');
-    testData.append('subject', 'TEST - Formulario desde localhost');
-    testData.append('_captcha', 'false');
-    
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: testData
-      });
-      
-      const data = await response.json();
-      console.log('🔍 Test desde localhost:', { status: response.status, data });
-      
-      if (data.success) {
-        alert('✅ Test exitoso! Revisa tu email en pocos minutos.');
-      } else {
-        alert('❌ Error en el test: ' + (data.message || 'Revisar consola'));
-        console.error('Error details:', data);
-      }
-    } catch (error) {
-      console.error('❌ Network error desde localhost:', error);
-      alert('❌ Error de red. Revisar consola.');
-    }
-  };
-
-  // 🔒 Validación del formulario
+  //  Validación del formulario
   const validateForm = (formData: FormData): boolean => {
     const newErrors: Record<string, string> = {};
     
@@ -122,20 +89,17 @@ export default function ConsultoriaForm() {
       return;
     }
     
-    // 🔧 Preparar datos para Web3Forms
-    const submissionData = new FormData();
-    submissionData.append('access_key', '785b22ca-f549-4342-b273-3dface70aeed');
-    
-    // Campos estándar requeridos
-    submissionData.append('name', (formData.get('nombre') as string || '').trim());
-    submissionData.append('email', (formData.get('email') as string || '').trim());
-    submissionData.append('subject', '🔥 Consulta Asesoría IT - PmDevCode');
-    
-    // Mensaje completo formateado
-    const mensaje = `
-NUEVA CONSULTA DE ASESORÍA IT - PmDevOps
+    // � Enviar a nuestra API segura (NO expone credenciales)
+    const payload = {
+      name: (formData.get('nombre') as string || '').trim(),
+      email: (formData.get('email') as string || '').trim(),
+      company: (formData.get('empresa') as string || '').trim(),
+      phone: (formData.get('telefono') as string || '').trim(),
+      subject: '🔥 Consulta Asesoría IT - PmDevCode',
+      message: `
+NUEVA CONSULTA DE ASESORÍA IT - PmDevCode
 ===========================================
-🌐 Enviado desde: ${window.location.origin} (desarrollo local)
+🌐 Enviado desde: ${window.location.origin}
 
 👤 INFORMACIÓN DE CONTACTO:
 • Nombre: ${(formData.get('nombre') as string || '').trim()}
@@ -152,70 +116,35 @@ ${(formData.get('descripcion') as string || '').trim()}
 
 ---
 📅 Fecha: ${new Date().toLocaleString('es-AR')}
-    `.trim();
-    
-    submissionData.append('message', mensaje);
-    
-    // Configuración especial para localhost
-    submissionData.append('_captcha', 'false');
-    submissionData.append('_template', 'basic');
+      `.trim()
+    };
     
     try {
-      console.log('🔍 Enviando desde localhost:', Object.fromEntries(submissionData.entries()));
+      console.log('🔍 Enviando consultoría...');
       
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
-        body: submissionData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
       });
 
-      console.log('🔍 Response status:', response.status);
+      const data = await response.json();
       
-      let data;
-      try {
-        data = await response.json();
-        console.log('🔍 Response data:', data);
-      } catch {
-        console.log('⚠️ No se pudo parsear JSON, pero puede que el email se haya enviado');
-        data = null;
-      }
-
-      // 🔧 Mejorar detección de éxito para localhost
-      const isSuccess = response.ok || response.status === 200 || (data && data.success);
-      
-      if (isSuccess) {
+      if (data.success) {
         setSubmitStatus('success');
         setLastSubmissionTime(Date.now());
         e.currentTarget.reset();
-        console.log('✅ Email enviado exitosamente desde localhost!');
+        console.log('✅ Email enviado exitosamente!');
       } else {
-        console.warn('⚠️ Respuesta ambigua desde localhost. Email puede haberse enviado.');
-        // En localhost, asumimos éxito si no hay error crítico
-        if (response.status < 500) {
-          setSubmitStatus('success');
-          setLastSubmissionTime(Date.now());
-          e.currentTarget.reset();
-          console.log('✅ Asumiendo éxito desde localhost (revisa tu email)');
-        } else {
-          throw new Error(data?.message || `Error del servidor: ${response.status}`);
-        }
+        throw new Error(data.message || 'Error al enviar el formulario');
       }
     } catch (error) {
       console.error('❌ Error completo:', error);
-      
-      // 🔧 En localhost, dar más información sobre el error
-      const isNetworkError = error instanceof TypeError && error.message.includes('fetch');
-      const isTimeoutError = error instanceof Error && error.message.includes('timeout');
-      
-      if (isNetworkError || isTimeoutError) {
-        setErrors({ 
-          general: `⚠️ Error de red. El email PUEDE haberse enviado correctamente. Revisa tu bandeja de entrada en unos minutos.` 
-        });
-      } else {
-        setErrors({ 
-          general: `Error: ${error instanceof Error ? error.message : 'Conexión fallida'}` 
-        });
-      }
-      
+      setErrors({ 
+        general: `Error: ${error instanceof Error ? error.message : 'No se pudo enviar el formulario'}` 
+      });
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -248,24 +177,11 @@ ${(formData.get('descripcion') as string || '').trim()}
               Consulta de Asesoría IT
             </h1>
             <p className="text-xl text-gray-300 mb-2">
-              <strong>Patricio Millán - PmDevOps</strong>
+              <strong>Patricio Millán - PmDevCode</strong>
             </p>
             <p className="text-gray-400">
               Obtené orientación técnica especializada para potenciar tu negocio
             </p>
-            
-            {/* 🔍 Botón de test API */}
-            <div className="mt-4 space-x-4">
-              <button
-                onClick={testAPI}
-                className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg text-sm transition-colors"
-              >
-                🔍 Test desde Localhost
-              </button>
-              <span className="text-yellow-400 text-xs">
-                ⚡ Optimizado para desarrollo local
-              </span>
-            </div>
           </div>
 
           {/* 🔒 Mensajes de error general */}

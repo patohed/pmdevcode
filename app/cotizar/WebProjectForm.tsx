@@ -167,17 +167,13 @@ export default function WebProjectForm() {
       return;
     }
     
-    // Preparar datos para Web3Forms
-    const submissionData = new FormData();
-    submissionData.append('access_key', '785b22ca-f549-4342-b273-3dface70aeed');
-    
-    // Campos estándar requeridos
-    submissionData.append('name', formData.nombreCompleto);
-    submissionData.append('email', formData.email);
-    submissionData.append('subject', '🚀 Propuesta Web Completa - PmDevCode');
-    
-    // Mensaje completo formateado
-    const mensaje = `
+    // 🔒 Enviar a nuestra API segura (NO expone credenciales)
+    const payload = {
+      name: formData.nombreCompleto,
+      email: formData.email,
+      company: formData.empresa,
+      subject: '🚀 Propuesta Web Completa - PmDevCode',
+      message: `
 NUEVA SOLICITUD DE PROPUESTA WEB COMPLETA - PmDevCode
 =======================================================
 🌐 Enviado desde: ${typeof window !== 'undefined' ? window.location.origin : 'Web'}
@@ -225,67 +221,34 @@ ${formData.comentarios || 'Sin comentarios adicionales'}
 
 ---
 📅 Fecha: ${new Date().toLocaleString('es-AR')}
-    `.trim();
-    
-    submissionData.append('message', mensaje);
-    
-    // Configuración especial
-    submissionData.append('_captcha', 'false');
-    submissionData.append('_template', 'basic');
+      `.trim()
+    };
     
     try {
-      console.log('🔍 Enviando propuesta web:', formData);
+      console.log('🔍 Enviando propuesta web...');
       
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
-        body: submissionData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
       });
 
-      console.log('🔍 Response status:', response.status);
+      const data = await response.json();
       
-      let data;
-      try {
-        data = await response.json();
-        console.log('🔍 Response data:', data);
-      } catch {
-        console.log('⚠️ No se pudo parsear JSON, pero puede que el email se haya enviado');
-        data = null;
-      }
-
-      // Mejorar detección de éxito
-      const isSuccess = response.ok || response.status === 200 || (data && data.success);
-      
-      if (isSuccess) {
+      if (data.success) {
         setSubmitStatus('success');
         setLastSubmissionTime(Date.now());
         console.log('✅ Propuesta web enviada exitosamente!');
       } else {
-        console.warn('⚠️ Respuesta ambigua. Email puede haberse enviado.');
-        // Asumimos éxito si no hay error crítico
-        if (response.status < 500) {
-          setSubmitStatus('success');
-          setLastSubmissionTime(Date.now());
-          console.log('✅ Asumiendo éxito (revisa tu email)');
-        } else {
-          throw new Error(data?.message || `Error del servidor: ${response.status}`);
-        }
+        throw new Error(data.message || 'Error al enviar el formulario');
       }
     } catch (error) {
       console.error('❌ Error completo:', error);
-      
-      const isNetworkError = error instanceof TypeError && error.message.includes('fetch');
-      const isTimeoutError = error instanceof Error && error.message.includes('timeout');
-      
-      if (isNetworkError || isTimeoutError) {
-        setErrors({ 
-          general: `⚠️ Error de red. El email PUEDE haberse enviado correctamente. Revisa tu bandeja de entrada en unos minutos.` 
-        });
-      } else {
-        setErrors({ 
-          general: `Error: ${error instanceof Error ? error.message : 'Conexión fallida'}` 
-        });
-      }
-      
+      setErrors({ 
+        general: `Error: ${error instanceof Error ? error.message : 'No se pudo enviar el formulario'}` 
+      });
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

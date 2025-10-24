@@ -1,13 +1,13 @@
 import HeroSection from "../components/HeroSection";
 import Services from '@/components/Services';
 import TrustedCompanies from '@/components/TrustedCompanies';
-import SolutionsBySector from '@/components/SolutionsBySector';
-import PricingPackages from '@/components/PricingPackages';
-import ProfessionalProcess from '@/components/ProfessionalProcess';
+// import SolutionsBySector from '@/components/SolutionsBySector'; // Comentado - Mover a /sectores
+// import PricingPackages from '@/components/PricingPackages'; // Comentado - Mover a /cotizar
+// import ProfessionalProcess from '@/components/ProfessionalProcess'; // Comentado - Mover a /servicios
 import Testimonials from '@/components/Testimonials';
-import CredentialsSection from '@/components/CredentialsSectionDragDrop';
-import CredentialsSectionMobile from '@/components/CredentialsSectionMobile';
-import CompactFAQ from '@/components/CompactFAQ';
+// import CredentialsSection from '@/components/CredentialsSectionDragDrop'; // Comentado - Mover a /portfolio
+// import CredentialsSectionMobile from '@/components/CredentialsSectionMobile'; // Comentado - Mover a /portfolio
+// import CompactFAQ from '@/components/CompactFAQ'; // Comentado - Ya existe página /faq
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { BreadcrumbSchema } from '@/components/SEO/BreadcrumbSchema';
@@ -71,22 +71,51 @@ export default function Home() {
 
       {/* Contenido principal con estructura semántica */}
       <main role="main">
+        {/* === SECCIÓN 1: HERO === */}
         <HeroSection />
+        
+        {/* === SECCIÓN 2: SERVICIOS PRINCIPALES === */}
         <Services />
+        
+        {/* === SECCIÓN 3: EMPRESAS QUE CONFÍAN (Social Proof) === */}
         <TrustedCompanies />
-        <SolutionsBySector />
-        <PricingPackages />
-        <ProfessionalProcess />
+        
+        {/* === SECCIÓN 4: SOLUCIONES POR SECTOR === */}
+        {/* OPTIMIZACIÓN: Esta sección es muy específica para home
+            Mejor en página dedicada /sectores o /industrias */}
+        {/* <SolutionsBySector /> */}
+        
+        {/* === SECCIÓN 5: PAQUETES DE PRECIOS === */}
+        {/* OPTIMIZACIÓN: Ya existe página /cotizar con formulario
+            Los precios van mejor ahí para no abrumar visitantes iniciales */}
+        {/* <PricingPackages /> */}
+        
+        {/* === SECCIÓN 6: PROCESO PROFESIONAL === */}
+        {/* OPTIMIZACIÓN: Contenido secundario "cómo trabajamos"
+            Mejor moverlo a /servicios con más detalle */}
+        {/* <ProfessionalProcess /> */}
+        
+        {/* === SECCIÓN 7: TESTIMONIOS (Conversión crítica) === */}
         <Testimonials />
+        
+        {/* === SECCIÓN 8: CREDENCIALES === */}
+        {/* OPTIMIZACIÓN: Ya existe /portfolio donde estas credenciales tienen más sentido
+            Mucha carga visual para home, mejor en portfolio dedicado */}
         {/* Solo mostrar drag and drop en pantallas grandes (desktop) */}
-        <div className="hidden xl:block">
+        {/* <div className="hidden xl:block">
           <CredentialsSection />
-        </div>
+        </div> */}
         {/* Versión móvil y tablet de las credenciales */}
-        <div className="block xl:hidden">
+        {/* <div className="block xl:hidden">
           <CredentialsSectionMobile />
-        </div>
-        <CompactFAQ />
+        </div> */}
+        
+        {/* === SECCIÓN 9: FAQ COMPACTO === */}
+        {/* OPTIMIZACIÓN: Ya existe página /faq completa
+            Opción: Reducir a solo 3 FAQs top o eliminar completamente */}
+        {/* <CompactFAQ /> */}
+        
+        {/* === SECCIÓN 10: CONTACTO (CTA Principal) === */}
         <Contact />
       </main>
       
