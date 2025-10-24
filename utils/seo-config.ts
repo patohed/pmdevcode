@@ -229,7 +229,7 @@ export function generatePageMetadata(pageKey: keyof typeof SEO_CONFIG.pages, cus
       },
     },
     verification: {
-      google: "tu-codigo-de-verificacion-google",
+      google: "TzDEnfQV5QmqLQym6Y0S2U2BIl5cmuYxhFNE0wAD7aU",
       bing: "tu-codigo-de-verificacion-bing",
     },
   };
